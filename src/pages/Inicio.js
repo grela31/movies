@@ -19,20 +19,14 @@ function Inicio() {
       <p>En GrelaFilms encontraras una gran lista de peliculas, podras agregar si no estan y eliminar las que esten mal,
         las 10 mejores peliculas segun nuestro criterio y mucho mas a que esperas para unirte a la familia de cinefilos! 
       </p>
-
-      <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
-      aria-controls="pills-login" aria-selected="true">Login</a>
-  </li>
-  
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
-      aria-controls="pills-register" aria-selected="false">Register</a>
-  </li>
-
-</ul>
-      <hr></hr>
+      <br></br>
+      <img src="../imagenes/unete.png" width="300" height="100"></img>
+      <br></br>
+      <div class="d-inline-flex p-3 bg-secondary text-white">
+  <div class="p-2 bg-primary"><button type="button" class="btn btn-primary btn-lg btn-block">Login</button></div>
+  &nbsp;
+  <div class="p-2 bg-primary"><button type="button" class="btn btn-primary btn-lg btn-block">Register</button></div>
+</div>
     </div>
   </div>
 </div>
