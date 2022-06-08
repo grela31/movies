@@ -23,9 +23,13 @@ function Home() {
 
     return <Protected>
         <Container>
+            <div className="agregarpeli">
             <Button color="primary" variant="contained" onClick={() => { navigate('/add-movie') }}>Añadir Película</Button>
+            </div>
+            <div className="listadodepeliculas">
             <MovieCardList movies={movies} onFavoriteAdded={async () => { await getMovies(); }}
                 onRatingChanged={async () => { await getMovies(); }} />
+                </div>
         </Container>
     </Protected>
 }

@@ -23,9 +23,9 @@ function Inicio() {
       <img src="../imagenes/unete.png" width="300" height="100"></img>
       <br></br>
       <div class="d-inline-flex p-3 bg-secondary text-white">
-  <div class="p-2 bg-primary"><button type="button" class="btn btn-primary btn-lg btn-block">Login</button></div>
+  <div class="p-2 bg-primary">< button type="button" class="btn btn-primary btn-lg btn-block" href="/login">Login</button></div>
   &nbsp;
-  <div class="p-2 bg-primary"><button type="button" class="btn btn-primary btn-lg btn-block">Register</button></div>
+  <div class="p-2 bg-primary"><button type="button" class="btn btn-primary btn-lg btn-block" href="/register">Register</button></div>
 </div>
     </div>
   </div>

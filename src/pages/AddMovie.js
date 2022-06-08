@@ -15,6 +15,10 @@ function AddMovie() {
 
     return <Protected>
         <Container>
+            <div className="agregarpelicula">
+            <div className="imagenagregar">
+            <h3>Agregar pelicula</h3>
+            </div>
             <Box
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -27,12 +31,12 @@ function AddMovie() {
                     <div>
                         <TextField
                             required
-                            id="outlined-required"
+                            id="title"
                             label="Título"
                             variant="standard"
                         />
                         <TextField
-                            id="outlined-number"
+                            id="year"
                             label="Año"
                             type="number"
                             InputLabelProps={{
@@ -42,20 +46,15 @@ function AddMovie() {
                         />
                     </div>
                     <div>
+                      
                         <TextField
-                            required
-                            id="outlined-required"
-                            label="Director"
-                            variant="standard"
-                        />
-                        <TextField
-                            id="outlined-number"
+                            id="storyline"
                             label="Sinopsis"
                             variant="standard"
                             type="text"
                         />
                     </div>
-                    <div>
+                    <div className="subirimagen">
                         <label htmlFor="contained-button-file">
                             <Input accept="image/*" id="contained-button-file" multiple type="file" />
                             <Button variant="contained" component="span">
@@ -63,13 +62,14 @@ function AddMovie() {
                             </Button>
                         </label>
                     </div>
-                    <div>
+                    <div className="crearpelicula">
                         <Button type="submit" variant="contained">
                             Crear Película
                         </Button>
                     </div>
                 </form>
             </Box>
+            </div>
         </Container>
     </Protected>
 }

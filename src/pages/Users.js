@@ -20,12 +20,14 @@ function Users() {
 
     return <Protected>
         <Container>
+            <div className="userslist">
+            <h2>Lista de usuarios de la web</h2>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Email</TableCell>
-                            <TableCell align="right">Name</TableCell>
+                            <TableCell align="right">Nombre</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -43,6 +45,7 @@ function Users() {
                     </TableBody>
                 </Table>
             </TableContainer>
+            </div>
         </Container>
     </Protected>
 }

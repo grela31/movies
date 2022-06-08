@@ -55,3 +55,40 @@
 .iconosfooter{
   align-items: center;
 }
+
+.form{
+margin-left: 20%;
+margin-right: 20%;
+border:  #282c34;
+border-style: groove;
+padding: 10px 40px 20px;
+}
+
+.agregarpeli{
+  margin-top: 2%;
+}
+
+.listadodepeliculas{
+  margin-top: 3%;
+}
+
+.listadofavoritas{
+  margin-top: 3%;
+}
+
+.agregarpelicula{
+  margin-top: 3%;
+}
+
+.subirimagen{
+  margin-top: 1%;
+}
+
+.crearpelicula{
+  margin-top: 1%;
+}
+
+.userslist{
+  margin-top: 2%;
+  padding: 40px 40px 40px 40px;
+}

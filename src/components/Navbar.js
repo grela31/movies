@@ -14,7 +14,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 
-const pages = [{ text: 'Inicio', route: '/' }, { text: 'Peliculas', route: '/peliculas' }, { text: 'Mejores Peliculas', route: '/peliculas' }, { text: 'Mis Favoritas', route: '/my-favorites' }, { text: 'Usuarios', route: '/users' },];
+const pages = [{ text: 'Inicio', route: '/' }, { text: 'Peliculas', route: '/peliculas' }, { text: 'Mis Favoritas', route: '/my-favorites' }, { text: 'Usuarios', route: '/users' },];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -122,7 +122,6 @@ const Navbar = () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -139,7 +138,7 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            LOG
+            
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map(({ text, route }) => (

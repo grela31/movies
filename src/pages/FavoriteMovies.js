@@ -21,7 +21,11 @@ function FavoriteMovies() {
 
     return <Protected>
         <Container>
+            <div className="listadofavoritas">
+            <h3>Mis Favoritas</h3>
+            <br></br>
             <MovieCardList movies={movies} onFavoriteAdded={async () => { await loadMovies(); }} />
+            </div>
         </Container>
     </Protected>
 }

@@ -21,12 +21,21 @@ function Form({ isRegister, onSubmit, title }) {
     }
 
     return <div>
+<br></br>
+<div className="form">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <img src="../imagenes/login.jpg" width="300" height="300"></img>
+    </div>
+    <div class="col-sm-5">
+
         <div className="heading-container">
             <h3>
-                {title} Form
+                {title} 
             </h3>
         </div>
-
+        
         <Box
             component="form"
             sx={{
@@ -61,6 +70,10 @@ function Form({ isRegister, onSubmit, title }) {
 
         <Button variant="contained" onClick={handleButtonClick}>{title}</Button>
     </div>
+    </div>
+    </div>
+  </div>   
+  </div> 
 }
 
 export default Form;
