@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import firebase, { initializeApp } from 'firebase/app'
-import { getFirestore, doc, setDoc, collection, getDocs, writeBatch, getDoc, updateDoc } from 'firebase/firestore'
+import { getFirestore, doc, setDoc, deleteDoc, collection, getDocs, writeBatch, getDoc, updateDoc, addDoc } from 'firebase/firestore'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -40,13 +40,16 @@ export async function createUser(email, name, userId) {
   });
 }
 
-export async function createMovie(title, director, year) {
-  await setDoc(doc(db, "movies"), {
-    title,
-    director,
-    year
+export async function createMovie(title, director, year, storyline, poster) {
+  await addDoc(collection(db, "movies"), {
+    title, director, year, storyline, poster
   });
 }
+
+export async function deleteMovie(movieId) {
+  await deleteDoc(doc(db, "movies", movieId));
+}
+
 export async function addFavoriteMovie(userId, movieId) {
   const userMoviesRef = doc(db, `users/${userId}/movies/${movieId}`);
   const movieUsersRef = doc(db, `movies/${movieId}/users/${userId}`);
@@ -69,7 +72,7 @@ export async function removeFavoriteMovie(userId, movieId) {
 }
 
 export async function updateMovieRating(movieId, rating) {
-  const movieRef = doc(db, 'movies',movieId);
+  const movieRef = doc(db, 'movies', movieId);
 
   await updateDoc(movieRef, { rating });
 }

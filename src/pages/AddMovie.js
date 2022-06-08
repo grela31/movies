@@ -1,23 +1,47 @@
 import { Box, Button, Input, TextField } from "@mui/material";
 import { Container } from "@mui/system";
+import { useRef } from "react";
 import Protected from "../components/Protected";
 import { createMovie } from "../utils/firebase";
+import { useSnackbar } from 'notistack';
 
 import style from './AddMovie.module.css';
+import { useNavigate } from "react-router-dom";
 
 function AddMovie() {
-    const handleAddMovieSubmit = (e) => {
+    const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
+
+    const titleInputRef = useRef(null);
+    const directorInputRef = useRef(null);
+    const yearInputRef = useRef(null);
+    const storylineInputRef = useRef(null);
+    const posterInputRef = useRef(null);
+
+
+    const handleAddMovieSubmit = async (e) => {
         e.preventDefault();
 
-        console.log('crear peli');
-        createMovie('test', "director", 1990);
+        const title = titleInputRef.current.value;
+        const director = directorInputRef.current.value;
+        const year = yearInputRef.current.value;
+        const storyline = storylineInputRef.current.value;
+        const poster = posterInputRef.current.value;
+
+        console.log({ title, director, year, storyline, poster })
+
+        await createMovie(title, director, year, storyline, poster);
+
+        enqueueSnackbar('Película creada correctamente', { variant: 'success' });
+
+        navigate('/peliculas');
+
     }
 
     return <Protected>
         <Container>
             <div className="agregarpelicula">
-            <div className="imagenagregar">
-            <h3>Agregar pelicula</h3>
+                <h3>Agregar pelicula</h3>
             </div>
             <Box
                 sx={{
@@ -34,6 +58,14 @@ function AddMovie() {
                             id="title"
                             label="Título"
                             variant="standard"
+                            inputRef={titleInputRef}
+                        />
+                        <TextField
+                            required
+                            id="director"
+                            label="Director"
+                            variant="standard"
+                            inputRef={directorInputRef}
                         />
                         <TextField
                             id="year"
@@ -43,24 +75,25 @@ function AddMovie() {
                                 shrink: true,
                             }}
                             variant="standard"
+                            inputRef={yearInputRef}
                         />
                     </div>
                     <div>
-                      
+
                         <TextField
                             id="storyline"
                             label="Sinopsis"
                             variant="standard"
                             type="text"
+                            inputRef={storylineInputRef}
                         />
-                    </div>
-                    <div className="subirimagen">
-                        <label htmlFor="contained-button-file">
-                            <Input accept="image/*" id="contained-button-file" multiple type="file" />
-                            <Button variant="contained" component="span">
-                                Subir Imagen Portada
-                            </Button>
-                        </label>
+                        <TextField
+                            id="image"
+                            label="Url de la portada"
+                            variant="standard"
+                            type="text"
+                            inputRef={posterInputRef}
+                        />
                     </div>
                     <div className="crearpelicula">
                         <Button type="submit" variant="contained">
@@ -69,7 +102,6 @@ function AddMovie() {
                     </div>
                 </form>
             </Box>
-            </div>
         </Container>
     </Protected>
 }

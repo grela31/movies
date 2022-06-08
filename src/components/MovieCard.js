@@ -13,11 +13,12 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { addFavoriteMovie, getFavoriteMovies, removeFavoriteMovie, updateMovieRating } from '../utils/firebase';
+import { addFavoriteMovie, deleteMovie, getFavoriteMovies, removeFavoriteMovie, updateMovieRating } from '../utils/firebase';
 import { Rating } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import styles from './MovieCard.module.css';
+import { useSnackbar } from 'notistack';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -39,6 +40,8 @@ const isFavoriteMovie = async (movieId, userId) => {
 }
 
 export default function MovieCard({ movie, onFavorited, onRatingChanged }) {
+  const { enqueueSnackbar } = useSnackbar();
+
   const { title, year, poster, storyline } = movie;
   const [expanded, setExpanded] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
@@ -80,17 +83,18 @@ export default function MovieCard({ movie, onFavorited, onRatingChanged }) {
     }
   }
 
+  const handleDeleteMovieClick = async () => {
+    await deleteMovie(movie.id);
+
+    enqueueSnackbar('Película eliminada correctamente', { variant: 'success' });
+  }
+
   return (
     <Card sx={{ maxWidth: 345 }} className={styles.movieCard}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+          <IconButton aria-label="delete movie" onClick={handleDeleteMovieClick}>
+            <DeleteIcon />
           </IconButton>
         }
         title={title}

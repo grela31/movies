@@ -2,7 +2,8 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } f
 import { app, createUser } from './utils/firebase';
 import './App.css';
 import Form from './components/Form';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {SnackbarProvider} from 'notistack';
 
 import {
   Routes,
@@ -53,17 +54,19 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Inicio />} />
-        <Route path='/add-movie' element={<AddMovie />} />
-        <Route path='/peliculas' element={<Home />} />
-        <Route path='/users' element={<Users />} />
-        <Route path='/my-favorites' element={<FavoriteMovies />} />
-        <Route path='/login' element={<Form onSubmit={handleLogin} title="Login" />} />
-        <Route path='/register' element={<Form isRegister={true} onSubmit={handleRegister} title="Register" />} />
-      </Routes>
-      <Footer/>
-      
+      <SnackbarProvider maxSnack={3}>
+        <Routes>
+          <Route path='/' element={<Inicio />} />
+          <Route path='/add-movie' element={<AddMovie />} />
+          <Route path='/peliculas' element={<Home />} />
+          <Route path='/users' element={<Users />} />
+          <Route path='/my-favorites' element={<FavoriteMovies />} />
+          <Route path='/login' element={<Form onSubmit={handleLogin} title="Login" />} />
+          <Route path='/register' element={<Form isRegister={true} onSubmit={handleRegister} title="Register" />} />
+        </Routes>
+      </SnackbarProvider>
+      <Footer />
+
     </div>
   );
 }
